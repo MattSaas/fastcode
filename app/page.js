@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,7 +13,9 @@ export default function Home() {
         <h2 className="card-title">New movie is released!</h2>
         <p>Click the button to watch on Jetflix app.</p>
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Watch</button>
+          <Link className="btn btn-primary" href="/dashboard">
+            Dashboard
+          </Link>
         </div>
       </div>
     </div>
