@@ -1,6 +1,12 @@
-import Link from "next/link";
+import LoginButton from "@/components/LoginButton";
 
 export default function Home() {
+  const UserData = {
+    isLoggedin: false,
+    UserName: "Marc",
+  };
+  const { isLoggedin, UserName } = UserData;
+
   return (
     <div className="card card-side bg-base-100 shadow-xl">
       <figure>
@@ -9,13 +15,15 @@ export default function Home() {
           alt="Movie"
         />
       </figure>
-      <div className="card-body">
-        <h2 className="card-title">New movie is released!</h2>
-        <p>Click the button to watch on Jetflix app.</p>
+      <div className="card-body ">
+        <h2 className="card-title text-3xl text-yellow-300">
+          New movie is released!
+        </h2>
+        <p className="text-emerald-500">
+          Click the button to watch on Jetflix app.
+        </p>
         <div className="card-actions justify-end">
-          <Link className="btn btn-primary" href="/dashboard">
-            Dashboard
-          </Link>
+          <LoginButton isLoggedin={isLoggedin} Username={UserName} />
         </div>
       </div>
     </div>
