@@ -3,8 +3,8 @@ import Link from "next/link";
 const LoginButton = ({ isLoggedin, Username }) => {
   if (isLoggedin) {
     return (
-      <Link className="btn btn-outline btn-accent" href="/dashboard">
-        Go Dashboard {Username}
+      <Link className="btn btn-sm btn-accent text-white" href="/dashboard">
+        Welcome Back {Username}
       </Link>
     );
   }
