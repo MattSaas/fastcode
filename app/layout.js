@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
     <html
       lang="en"
       suppressHydrationWarning
-      data-theme="sunset"
+      data-theme="dark"
       className="scroll-smooth"
     >
       <body

@@ -1,6 +1,8 @@
 import LoginButton from "@/components/LoginButton";
 import ListItem from "@/components/ListItem";
 import FAQListItem from "@/components/FAQListItem";
+import Image from "next/image";
+import ProductDemo from "@/app/productDemo.jpeg";
 
 export default function Home() {
   const UserData = {
@@ -8,10 +10,6 @@ export default function Home() {
     UserName: "John",
     extraStyle: "w-full",
   };
-
-  // let age = 18;
-  // let canVot;
-  // canVot = age >= 18 ? "YES" : "No";
 
   const { isLoggedin, UserName, extraStyle } = UserData;
 
@@ -44,20 +42,27 @@ export default function Home() {
       </section>
 
       {/* Here */}
-      <section className="bg-base-200 text-center py-5 px-8 max-w-6xl mx-auto ">
-        <h1 className="text-4xl font-extrabold mb-10 lg:text-5xl md:text-2xl">
-          Collecting customer feedback to creating products that truly meet
-          expectations of your users.
-        </h1>
+      <section className="bg-base-200 text-center py-5 pt-10 px-8 max-w-6xl mx-auto flex flex-col md:flex-row gap-3 justify-center items-center">
+        <Image
+          src={ProductDemo}
+          alt="Product demo"
+          className="w-96 mx-2 md:mx-8  py-16 rounded-3xl"
+        ></Image>
+        <div className="lg:text-left">
+          <h1 className="text-3xl font-extrabold mb-10 lg:text-4xl md:text-2xl">
+            Collecting customer feedback to creating products that truly meet
+            expectations of your users.
+          </h1>
 
-        <div className="opacity-1 mb-10 font-sans text-base-400 text-lg">
-          Collecting customer feedback is essential for creating better products
-          and meeting user needs. Start by defining clear objectives, such as
-          identifying usability issues, understanding preferences, or
-          prioritizing new features. Use multiple channels to gather insights,
-          including surveys.
+          <div className="opacity-1 mb-10 font-sans text-base-400 text-lg">
+            Collecting customer feedback is essential for creating better
+            products and meeting user needs. Start by defining clear objectives,
+            such as identifying usability issues, understanding preferences, or
+            prioritizing new features. Use multiple channels to gather insights,
+            including surveys.
+          </div>
+          <LoginButton isLoggedin={isLoggedin} Username={UserName} />
         </div>
-        <LoginButton isLoggedin={isLoggedin} Username={UserName} />
       </section>
 
       {/* Pricing */}
@@ -104,7 +109,7 @@ export default function Home() {
         className="bg-base-200 text-center py-5 px-8 max-w-6xl mx-auto"
         id="faq"
       >
-        <div className="py-10 px-8 max-w-6xl mx-auto">
+        <div className="rounded-xl py-5 max-w-4xl mx-auto bg-base-100">
           <p className="text-gl uppercase text-primary font-medium text-center m-6">
             FAQ
           </p>
@@ -160,12 +165,20 @@ export default function Home() {
               src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
               alt="Movie"
             />
+            {/* <Image
+              src={`https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp`}
+              alt="Spiderman Movie"
+              width="600"
+              height="400"
+            ></Image> */}
           </figure>
           <div className="card-body">
-            <h2 className="card-title lg:text-4xl  text-amber-400 font-semibold font-mono uppercase">
+            <h2 className="card-title lg:text-4xl text-primary font-semibold font-mono uppercase">
               New movie is released!
             </h2>
-            <p className="">Click the button to watch on Jetflix app.</p>
+            <p className="text-left">
+              Click the button to watch on Jetflix app.
+            </p>
             <div className="card-actions justify-end">
               <LoginButton isLoggedin={isLoggedin} Username={UserName} />
             </div>
