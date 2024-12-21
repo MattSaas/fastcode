@@ -1,24 +1,39 @@
 import LoginButton from "@/components/LoginButton";
+import ListItem from "@/components/ListItem";
+import FAQListItem from "@/components/FAQListItem";
 
 export default function Home() {
   const UserData = {
     isLoggedin: true,
     UserName: "John",
+    extraStyle: "w-full",
   };
-  const { isLoggedin, UserName } = UserData;
+
+  // let age = 18;
+  // let canVot;
+  // canVot = age >= 18 ? "YES" : "No";
+
+  const { isLoggedin, UserName, extraStyle } = UserData;
 
   return (
     <main>
+      {/* Header */}
       <section className="bg-base-200 ">
         <div className="flex justify-between items-center px-10 py-2 max-w-6xl mx-auto md:flex-shrink-0">
-          <div className="font-extrabold text-white hover:text-sky-400 link no-underline">
+          <div className="font-extrabold text-primary hover:text-secondary link no-underline">
             CodeApp
           </div>
           <div className="space-x-4 hidden md:block">
-            <a className="link link-hover hover:text-sky-400 no-underline">
+            <a
+              className="link link-hover hover:text-sky-400 no-underline"
+              href="#pricing"
+            >
               Pricing
             </a>
-            <a className="link link-hover hover:text-sky-400 no-underline">
+            <a
+              className="link link-hover hover:text-sky-400 no-underline"
+              href="#faq"
+            >
               FAQ
             </a>
           </div>
@@ -27,8 +42,10 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="text-center py-32 px-8 max-w-6xl mx-auto">
-        <h1 className="text-4xl font-extrabold mb-10 lg:text-5xl md:text-3xl">
+
+      {/* Here */}
+      <section className="bg-base-200 text-center py-5 px-8 max-w-6xl mx-auto ">
+        <h1 className="text-4xl font-extrabold mb-10 lg:text-5xl md:text-2xl">
           Collecting customer feedback to creating products that truly meet
           expectations of your users.
         </h1>
@@ -43,8 +60,101 @@ export default function Home() {
         <LoginButton isLoggedin={isLoggedin} Username={UserName} />
       </section>
 
-      {/* <section className=" border-e-yellow-300">
-        <div className="card card-side bg-base-100 shadow-xl max-w-3xl mx-auto my-5 border border-sky-500">
+      {/* Pricing */}
+      <section
+        className="bg-base-200 text-center py-5 px-8 max-w-6xl mx-auto"
+        id="pricing"
+      >
+        <div className="py-10 px-8 max-w-6xl mx-auto">
+          <p className="text-gl uppercase text-primary font-medium text-center m-6">
+            Pricing
+          </p>
+          <h2 className="text-3xl lg:text-4xl font-extrabold mb-12 text-center">
+            A pricing that adapts to your needs.
+          </h2>
+
+          {/* Pricing Card */}
+          <div className="flex max-w-full justify-between ">
+            {/* card 1 */}
+            <div className="p-8 bg-base-100 w-96 rounded-xl mx-auto">
+              <div className="flex gap-2 items-baseline mb-6">
+                <div className="text-4xl font-extrabold">$19</div>
+                <div className="text-1xl uppercase font-medium opacity-60">
+                  /Month
+                </div>
+              </div>
+              <ul className="space-y-2 mb-5">
+                <ListItem checkColor="green">Collect feedback</ListItem>
+                <ListItem checkColor="green">Unlimited boards</ListItem>
+                <ListItem checkColor="green">Admin dashboard</ListItem>
+                <ListItem checkColor="green">24/7 Support</ListItem>
+              </ul>
+              <LoginButton
+                isLoggedin={isLoggedin}
+                Username={UserName}
+                extraStyle={extraStyle}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section
+        className="bg-base-200 text-center py-5 px-8 max-w-6xl mx-auto"
+        id="faq"
+      >
+        <div className="py-10 px-8 max-w-6xl mx-auto">
+          <p className="text-gl uppercase text-primary font-medium text-center m-6">
+            FAQ
+          </p>
+          <h2 className="text-3xl lg:text-4xl font-extrabold mb-12 text-center">
+            Frequently Asked Questions
+          </h2>
+
+          {/* FAQ Modal */}
+          <ul className="space-y-2 max-w-2xl mb-5 mx-auto">
+            {[
+              {
+                qustion: "What is FastCode?",
+                answer:
+                  "AFastCode is a cutting-edge SaaS platform integrations for developers and teams.",
+              },
+              {
+                qustion: "How does FastCode work?",
+                answer:
+                  "FastCode streamlines coding by offering pre-built modules, AI-assisted suggestions.",
+              },
+              {
+                qustion: "Who can use FastCode?",
+                answer:
+                  "FastCode is designed for developers, startups, and enterprises looking to speed up development processes.",
+              },
+              {
+                qustion: "Is there a free trial available?",
+                answer:
+                  "Yes, FastCode offers a 14-day free trial with access to all premium features—no credit card required.",
+              },
+              {
+                qustion: "How secure is FastCode?",
+                answer:
+                  "FastCode supports GitHub, GitLab, Bitbucket, Slack, Jira, and many other developer tools. For the full list, visit our Integrations Page.",
+              },
+              {
+                qustion: "How can I get support?",
+                answer:
+                  "Our support team is available 24/7. Contact us via live chat, email, or our Help Center.",
+              },
+            ].map((qa) => (
+              <FAQListItem key={qa.qustion} qa={qa}></FAQListItem>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* spider card */}
+      <section className="bg-base-200 text-center py-32 px-8 max-w-6xl mx-auto">
+        <div className="card card-side bg-base-100 shadow-xl max-w-3xl mx-auto my-5 ">
           <figure>
             <img
               src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
@@ -52,18 +162,16 @@ export default function Home() {
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title text-3xl text-yellow-300 font-semibold font-mono uppercase">
+            <h2 className="card-title lg:text-4xl  text-amber-400 font-semibold font-mono uppercase">
               New movie is released!
             </h2>
-            <p className="text-emerald-500">
-              Click the button to watch on Jetflix app.
-            </p>
+            <p className="">Click the button to watch on Jetflix app.</p>
             <div className="card-actions justify-end">
               <LoginButton isLoggedin={isLoggedin} Username={UserName} />
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
     </main>
   );
 }
