@@ -3,6 +3,7 @@ import ListItem from "@/components/ListItem";
 import FAQListItem from "@/components/FAQListItem";
 import Image from "next/image";
 import ProductDemo from "@/app/productDemo.jpeg";
+// import clientPromise from "@/libs/mongo";
 
 export default function Home() {
   const UserData = {
