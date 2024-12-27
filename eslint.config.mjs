@@ -9,12 +9,6 @@ const compat = new FlatCompat({
   baseDirectory: __dirname,
 });
 
-const eslintConfig = [
-  ...compat.extends(
-    "next/core-web-vitals",
-    "eslint:recommended",
-    "eslint:recommendedConfig"
-  ),
-];
+const eslintConfig = [...compat.extends("next/core-web-vitals")];
 
 export default eslintConfig;
