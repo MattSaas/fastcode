@@ -10,7 +10,11 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "eslint:recommended"),
+  ...compat.extends(
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "eslint:recommendedConfig"
+  ),
 ];
 
 export default eslintConfig;
