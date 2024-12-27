@@ -3,16 +3,12 @@ import ListItem from "@/components/ListItem";
 import FAQListItem from "@/components/FAQListItem";
 import Image from "next/image";
 import ProductDemo from "@/app/productDemo.jpeg";
+import { auth } from "@/auth";
 // import clientPromise from "@/libs/mongo";
 
-export default function Home() {
-  const UserData = {
-    isLoggedin: true,
-    UserName: "John",
-    extraStyle: "w-full",
-  };
-
-  const { isLoggedin, UserName, extraStyle } = UserData;
+export default async function Home() {
+  // User login check
+  const session = await auth();
 
   return (
     <main>
@@ -37,12 +33,12 @@ export default function Home() {
             </a>
           </div>
           <div>
-            <LoginButton isLoggedin={isLoggedin} Username={UserName} />
+            <LoginButton session={session} />
           </div>
         </div>
       </section>
 
-      {/* Here */}
+      {/* Hero */}
       <section className="bg-base-200 text-center py-5 pt-10 px-8 max-w-6xl mx-auto flex flex-col md:flex-row gap-3 justify-center items-center">
         <Image
           src={ProductDemo}
@@ -62,7 +58,7 @@ export default function Home() {
             prioritizing new features. Use multiple channels to gather insights,
             including surveys.
           </div>
-          <LoginButton isLoggedin={isLoggedin} Username={UserName} />
+          <LoginButton session={session} />
         </div>
       </section>
 
@@ -95,11 +91,7 @@ export default function Home() {
                 <ListItem checkColor="green">Admin dashboard</ListItem>
                 <ListItem checkColor="green">24/7 Support</ListItem>
               </ul>
-              <LoginButton
-                isLoggedin={isLoggedin}
-                Username={UserName}
-                extraStyle={extraStyle}
-              />
+              <LoginButton session={session} />
             </div>
           </div>
         </div>
@@ -152,7 +144,11 @@ export default function Home() {
                   "Our support team is available 24/7. Contact us via live chat, email, or our Help Center.",
               },
             ].map((qa) => (
-              <FAQListItem key={qa.qustion} qa={qa}></FAQListItem>
+              <FAQListItem
+                key={qa.qustion}
+                qa={qa}
+                session={session}
+              ></FAQListItem>
             ))}
           </ul>
         </div>
@@ -181,7 +177,7 @@ export default function Home() {
               Click the button to watch on Jetflix app.
             </p>
             <div className="card-actions justify-end">
-              <LoginButton isLoggedin={isLoggedin} Username={UserName} />
+              <LoginButton session={session} />
             </div>
           </div>
         </div>
